@@ -10,7 +10,8 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 
-
+" Prettier custom settings
+nmap <space>f :Prettier<cr>
 
 " ============= Vim-Plug ============== "{{{
 
@@ -35,6 +36,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " ================= looks and GUI stuff ================== "{{{
 
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }  " vim-prettier for formatting
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}     " visual multi cursor
 Plug 'vim-airline/vim-airline'                          " airline status bar
 Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
