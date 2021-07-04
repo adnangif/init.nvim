@@ -12,6 +12,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 " Prettier custom settings
 nmap <space>f :Prettier<cr>
+let g:prettier#config#tab_width = 2
 
 " ============= Vim-Plug ============== "{{{
 
