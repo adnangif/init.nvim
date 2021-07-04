@@ -1,4 +1,26 @@
+
+
+
+
+
+" Custom Settings
+" NERDTree custom settings
+autocmd VimEnter * NERDTree  | wincmd p
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+
+
+
 " ============= Vim-Plug ============== "{{{
+
+
+
+
+
+
+
+
 
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -13,6 +35,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " ================= looks and GUI stuff ================== "{{{
 
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}     " visual multi cursor
 Plug 'vim-airline/vim-airline'                          " airline status bar
 Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
 Plug 'luochen1990/rainbow'                              " rainbow parenthesis
@@ -22,7 +45,7 @@ Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
 "}}}
 
 " ================= Functionalities ================= "{{{
-
+Plug 'preservim/nerdtree'                               " nerdtree
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
 Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
@@ -79,7 +102,7 @@ set grepprg=rg\ --vimgrep                               " use rg as default grep
 " performance tweaks
 set nocursorline
 set nocursorcolumn
-set scrolljump=5
+" set scrolljump=5
 set lazyredraw
 set redrawtime=10000
 set synmaxcol=180
@@ -145,6 +168,54 @@ let g:airline_symbols.branch = '⎇ '
 let g:airline_symbols.dirty= ''
 
 "" coc
+
+
+
+" --------------------------------------------------------
+" SETTINGS START
+
+set completeopt=longest,menuone
+
+" SETTINGS END
+" --------------------------------------------------------
+
+" --------------------------------------------------------
+" COC-VIM TAB SETTINGS START
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" COC-VIM TAB SETTINGS END
+" --------------------------------------------------------
+
+
 
 " Navigate snippet placeholders using tab
 let g:coc_snippet_next = '<Tab>'
@@ -443,7 +514,7 @@ nnoremap <F4> :CocCommand flutter.emulators<CR>
 nnoremap <F5> :CocCommand flutter.run<CR>
 
 " fugitive mappings
-nmap <leader>gd :Gdiffsplit<CR>
+nmap <leader>gd :Gvdiffsplit<CR>
 nmap <leader>gb :Git blame<CR>
 
 " tmux navigator
