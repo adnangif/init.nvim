@@ -14,8 +14,9 @@
   ],
 
   // suggest settings
-  "suggest.noselect": true,
+  "suggest.noselect": false,
   "suggest.detailField": "abbr",
+  "suggest.triggerAfterInsertEnter": true,
   "suggest.snippetIndicator": "",
   "suggest.removeDuplicateItems": true,
   "suggest.timeout": 2000,
