@@ -11,8 +11,32 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 
 " Prettier custom settings
-nmap <space>f :Prettier<cr>
+nmap <space>f :CocCommand eslint.executeAutofix<cr>
 let g:prettier#config#tab_width = 2
+
+
+inoremap {<CR> {<CR>}<Esc>ko<tab>
+inoremap [<CR> [<CR>]<Esc>ko<tab>
+inoremap (<CR> (<CR>)<Esc>ko<tab>
+
+
+" NERDTree
+nmap <space>s :NERDTreeToggle<cr>
+
+" coc tab to complete
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+
+
 
 " ============= Vim-Plug ============== "{{{
 
@@ -37,7 +61,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " ================= looks and GUI stuff ================== "{{{
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }  " vim-prettier for formatting
+" Plug 'jiangmiao/auto-pairs'
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }  " vim-prettier for formatting
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}     " visual multi cursor
 Plug 'vim-airline/vim-airline'                          " airline status bar
 Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
@@ -76,7 +101,7 @@ call plug#end()
 set termguicolors                                       " Opaque Background
 set mouse=a                                             " enable mouse scrolling
 set clipboard+=unnamedplus                              " use system clipboard by default
-set tabstop=4 softtabstop=4 shiftwidth=4 autoindent     " tab width
+set tabstop=2 softtabstop=2 shiftwidth=2 autoindent     " tab width
 set expandtab smarttab                                  " tab key actions
 set incsearch ignorecase smartcase hlsearch             " highlight text while searching
 set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
@@ -172,57 +197,9 @@ let g:airline_symbols.dirty= ''
 
 "" coc
 
-
-
-" --------------------------------------------------------
-" SETTINGS START
-
-set completeopt=longest,menuone
-
-" SETTINGS END
-" --------------------------------------------------------
-
-" --------------------------------------------------------
-" COC-VIM TAB SETTINGS START
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" COC-VIM TAB SETTINGS END
-" --------------------------------------------------------
-
-
-
 " Navigate snippet placeholders using tab
-let g:coc_snippet_next = '<Tab>'
-let g:coc_snippet_prev = '<S-Tab>'
+" let g:coc_snippet_next = '<Tab>'
+" let g:coc_snippet_prev = '<S-Tab>'
 
 " list of the extensions to make sure are always installed
 let g:coc_global_extensions = [
@@ -421,21 +398,22 @@ map <F6> :Startify <CR>
 nmap <leader>r :so ~/.config/nvim/init.vim<CR>
 nmap <leader>q :bd<CR>
 nmap <leader>w :w<CR>
-map <leader>s :Format<CR>
-nmap <Tab> :bnext<CR>
-nmap <S-Tab> :bprevious<CR>
+" map <leader>s :Format<CR>
+" nmap <Tab> :bnext<CR>
+" nmap <S-Tab> :bprevious<CR>
 noremap <leader>e :PlugInstall<CR>
 noremap <C-q> :q<CR>
 
 " new line in normal mode and back
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
+" map <Enter> o<ESC>
+" map <S-Enter> O<ESC>
 
 " use a different register for delete and paste
-nnoremap d "_d
-vnoremap d "_d
-vnoremap p "_dP
+" nnoremap d "_d
+" vnoremap d "_d
+" vnoremap p "_dP
 nnoremap x "_x
+
 
 " emulate windows copy, cut behavior
 vnoremap <LeftRelease> "+y<LeftRelease>
@@ -478,15 +456,11 @@ vmap <F1> <plug>(fzf-maps-x)
 
 "" coc
 
-" use tab to navigate snippet placeholders
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
 
 " Use enter to accept snippet expansion
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+" inoremap <expr> <cr> pumvisible() ? \"\<C-y>" : \"\<CR>"
 
 " multi cursor shortcuts
 nmap <silent> <C-a> <Plug>(coc-cursors-word)
@@ -512,9 +486,9 @@ nmap <leader>a <Plug>(coc-codeaction-line)
 xmap <leader>a <Plug>(coc-codeaction-selected)
 
 " flutter mappings
-nnoremap <F3> :CocCommand flutter.devices<CR>
-nnoremap <F4> :CocCommand flutter.emulators<CR>
-nnoremap <F5> :CocCommand flutter.run<CR>
+" nnoremap <F3> :CocCommand flutter.devices<CR>
+" nnoremap <F4> :CocCommand flutter.emulators<CR>
+" nnoremap <F5> :CocCommand flutter.run<CR>
 
 " fugitive mappings
 nmap <leader>gd :Gvdiffsplit<CR>

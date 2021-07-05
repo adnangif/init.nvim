@@ -14,11 +14,10 @@
   ],
 
   // suggest settings
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "suggest.detailField": "abbr",
   "suggest.snippetIndicator": "",
   "suggest.removeDuplicateItems": true,
-  "suggest.triggerAfterInsertEnter": true,
   "suggest.timeout": 2000,
   "suggest.minTriggerInputLength": 1,
   "suggest.completionItemKindLabels": {
