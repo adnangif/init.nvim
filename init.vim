@@ -15,12 +15,11 @@ nmap <space>s :NERDTreeToggle<cr>
 
 " Prettier custom settings
 nmap <space>f :CocCommand eslint.executeAutofix<cr>
-let g:prettier#config#tab_width = 2
 
 " Auto brackets pairs
-inoremap {<CR> {<CR>}<Esc>ko<tab>
-inoremap [<CR> [<CR>]<Esc>ko<tab>
-inoremap (<CR> (<CR>)<Esc>ko<tab>
+" inoremap {<CR> {<CR>}<Esc>ko<tab>
+" inoremap [<CR> [<CR>]<Esc>ko<tab>
+" inoremap (<CR> (<CR>)<Esc>ko<tab>
 
 
 
@@ -46,7 +45,7 @@ inoremap <silent><expr> <Tab>
 
 
 
-
+" let g:pear_tree_repeatable_expand = 0
 
 
 " auto-install vim-plug
@@ -62,7 +61,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " ================= looks and GUI stuff ================== "{{{
 
-" Plug 'jiangmiao/auto-pairs'
+" Plug 'tmsvg/pear-tree'
+
+Plug 'jiangmiao/auto-pairs'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }  " vim-prettier for formatting
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}     " visual multi cursor
 Plug 'vim-airline/vim-airline'                          " airline status bar
@@ -70,7 +71,7 @@ Plug 'ryanoasis/vim-devicons'                           " pretty icons everywher
 Plug 'luochen1990/rainbow'                              " rainbow parenthesis
 Plug 'hzchirs/vim-material'                             " material color themes
 Plug 'gregsexton/MatchTag'                              " highlight matching html tags
-Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
+" Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
 "}}}
 
 " ================= Functionalities ================= "{{{
@@ -89,7 +90,7 @@ Plug 'psliwka/vim-smoothie'                             " some very smooth ass s
 Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
 Plug 'tpope/vim-eunuch'                                 " run common Unix commands inside Vim
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'machakann/vim-sandwich'                           " make sandwiches
+" Plug 'machakann/vim-sandwich'                           " make sandwiches
 Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'TovarishFin/vim-solidity'
@@ -100,9 +101,11 @@ call plug#end()
 " ==================== general config ======================== "{{{
 
 set termguicolors                                       " Opaque Background
+set autoindent
+set smartindent
 set mouse=a                                             " enable mouse scrolling
 set clipboard+=unnamedplus                              " use system clipboard by default
-set tabstop=2 softtabstop=2 shiftwidth=2 autoindent     " tab width
+set tabstop=2 softtabstop=2 shiftwidth=2                " tab width
 set expandtab smarttab                                  " tab key actions
 set incsearch ignorecase smartcase hlsearch             " highlight text while searching
 set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
@@ -205,7 +208,6 @@ let g:airline_symbols.dirty= ''
 " list of the extensions to make sure are always installed
 let g:coc_global_extensions = [
             \'coc-yank',
-            \'coc-pairs',
             \'coc-json',
             \'coc-css',
             \'coc-html',
