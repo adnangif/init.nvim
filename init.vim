@@ -10,18 +10,19 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     \ quit | endif
 
 
+" NERDTree
+nmap <space>s :NERDTreeToggle<cr>
+
 " Prettier custom settings
 nmap <space>f :CocCommand eslint.executeAutofix<cr>
 let g:prettier#config#tab_width = 2
 
-
+" Auto brackets pairs
 inoremap {<CR> {<CR>}<Esc>ko<tab>
 inoremap [<CR> [<CR>]<Esc>ko<tab>
 inoremap (<CR> (<CR>)<Esc>ko<tab>
 
 
-" NERDTree
-nmap <space>s :NERDTreeToggle<cr>
 
 " coc tab to complete
 
