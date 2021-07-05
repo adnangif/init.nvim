@@ -17,10 +17,9 @@ nmap <space>s :NERDTreeToggle<cr>
 nmap <space>f :CocCommand eslint.executeAutofix<cr>
 
 " Auto brackets pairs
-" inoremap {<CR> {<CR>}<Esc>ko<tab>
-" inoremap [<CR> [<CR>]<Esc>ko<tab>
-" inoremap (<CR> (<CR>)<Esc>ko<tab>
-
+inoremap {<CR> {<CR>}<Esc>O
+inoremap [<CR> [<CR>]<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
 
 
 " coc tab to complete
@@ -45,7 +44,6 @@ inoremap <silent><expr> <Tab>
 
 
 
-" let g:pear_tree_repeatable_expand = 0
 
 
 " auto-install vim-plug
@@ -62,8 +60,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 " ================= looks and GUI stuff ================== "{{{
 
 " Plug 'tmsvg/pear-tree'
+" let g:pear_tree_repeatable_expand = 0
 
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }  " vim-prettier for formatting
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}     " visual multi cursor
 Plug 'vim-airline/vim-airline'                          " airline status bar
@@ -71,7 +70,7 @@ Plug 'ryanoasis/vim-devicons'                           " pretty icons everywher
 Plug 'luochen1990/rainbow'                              " rainbow parenthesis
 Plug 'hzchirs/vim-material'                             " material color themes
 Plug 'gregsexton/MatchTag'                              " highlight matching html tags
-" Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
+Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
 "}}}
 
 " ================= Functionalities ================= "{{{
@@ -89,7 +88,7 @@ Plug 'tpope/vim-fugitive'                               " git support
 Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
 Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
 Plug 'tpope/vim-eunuch'                                 " run common Unix commands inside Vim
-Plug 'dart-lang/dart-vim-plugin'
+" Plug 'dart-lang/dart-vim-plugin'
 " Plug 'machakann/vim-sandwich'                           " make sandwiches
 Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
