@@ -206,14 +206,14 @@ augroup END
 "Setting configs============================================ 
 nmap <leader>e :Reload<cr>
 nmap <leader>w :w<cr>
-nmap q         :q<cr>
-
+nmap <leader>q :q<cr>
+nmap qq        :bw<cr>
 " NERDTree ==================================================
 nmap <space>s  :NERDTreeToggle<cr>
 
 " Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
+" autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"     \ quit | endif
 
 
 
