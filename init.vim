@@ -71,9 +71,9 @@ nmap ff :CocCommand prettier.formatFile<cr>
 
 " Html tag auto indent
 inoremap <expr> <cr> 
-   \   getline(".")[col(".")-2:col(".")-1]=="><" ? "<cr><esc>ko"
-	 \ : getline(".")[col(".")-2:col(".")-1]=="{}" ? "<cr><esc>ko"
-	 \ : getline(".")[col(".")-2:col(".")-1]=="()" ? "<cr><esc>ko"
+   \   getline(".")[col(".")-2:col(".")-1]=="><" ? "<cr><esc>ko<tab>"
+	 \ : getline(".")[col(".")-2:col(".")-1]=="{}" ? "<cr><esc>ko<tab>"
+	 \ : getline(".")[col(".")-2:col(".")-1]=="()" ? "<cr><esc>ko<tab>"
 	 \ : getline(".")[col(".")-2:col(".")-1]=="[]" ? "<cr><esc>ko"
    \ :                                             "<cr>"
 
