@@ -193,11 +193,17 @@ augroup END
 
 
 
-"Setting configs 
+"Setting configs============================================ 
 nmap <leader>e :Reload<cr>
 nmap <leader>w :w<cr>
 nmap q         :q<cr>
+
+" NERDTree ==================================================
 nmap <space>s  :NERDTreeToggle<cr>
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
 
 
@@ -217,8 +223,8 @@ noremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" disable hl with 2 esc
-noremap <silent><esc> <esc>:noh<CR><esc>
+" disable hl with esc
+noremap <silent><esc> :noh<CR><esc>
 
 
 " fugitive mappings
