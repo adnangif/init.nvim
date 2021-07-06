@@ -56,7 +56,7 @@ call plug#end()
 
 
 " auto format
-nmap <C-I> :CocCommand prettier.formatFile<cr>
+nmap ff :CocCommand prettier.formatFile<cr>
 " nmap <C-I> :Prettier<cr>
 
 " let g:prettier#autoformat = 1
