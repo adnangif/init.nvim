@@ -3,7 +3,6 @@ let mapleader = ","
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-surround'
 
 " Lua functions
 Plug 'nvim-lua/plenary.nvim'
@@ -21,7 +20,7 @@ Plug 'hzchirs/vim-material'
 Plug 'vim-airline/vim-airline'
 
 " auto close
-Plug 'townk/vim-autoclose'
+" Plug 'townk/vim-autoclose'
 
 " foreign
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
@@ -67,7 +66,7 @@ nmap <C-I> :Prettier<cr>
 " Html tag auto indent
 inoremap <expr> <cr> 
    \   getline(".")[col(".")-2:col(".")-1]=="><" ? "<cr><esc>ko<tab>"
-	 \ : getline(".")[col(".")-2:col(".")-1]=="{}" ? "<cr><esc>ko<tab>"
+	 \ : getline(".")[col(".")-2:col(".")-1]=="{}" ? "<cr><esc>ko"
 	 \ : getline(".")[col(".")-2:col(".")-1]=="()" ? "<cr><esc>ko<tab>"
 	 \ : getline(".")[col(".")-2:col(".")-1]=="[]" ? "<cr><esc>ko<tab>"
    \ :                                             "<cr>"
