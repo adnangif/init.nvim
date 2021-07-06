@@ -19,9 +19,6 @@ Plug 'hzchirs/vim-material'
 " Airline
 Plug 'vim-airline/vim-airline'
 
-" auto close
-" Plug 'townk/vim-autoclose'
-
 " foreign
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
@@ -34,14 +31,21 @@ Plug 'mhinz/vim-startify'                               " cool start up screen
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
 Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
-" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-" Plug 'TovarishFin/vim-solidity'
-
 Plug 'ryanoasis/vim-devicons'                 " pretty icons everywhere
 Plug 'luochen1990/rainbow'                    " rainbow parenthesis
 Plug 'gregsexton/MatchTag'                    " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'                 " move visual selection
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+
+Plug 'lfv89/vim-interestingwords'             " highlight word
+nnoremap <silent> <space>k :call InterestingWords('n')<cr>
+vnoremap <silent> <space>k :call InterestingWords('v')<cr>
+nnoremap <silent><esc><esc> :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation(1)<cr>
+nnoremap <silent> N :call WordNavigation(0)<cr>
+let g:interestingWordsGUIColors = ['#FF7272', '#A4E57E','#8CCBEA', '#FFDB72',  '#FFB3FF', '#9999FF']
 
 
 
@@ -50,8 +54,10 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 
+
 " auto format
-nmap <C-I> :Prettier<cr>
+nmap <C-I> :CocCommand prettier.formatFile<cr>
+" nmap <C-I> :Prettier<cr>
 
 " let g:prettier#autoformat = 1
 " au BufWrite * :Autoformat
@@ -65,10 +71,10 @@ nmap <C-I> :Prettier<cr>
 
 " Html tag auto indent
 inoremap <expr> <cr> 
-   \   getline(".")[col(".")-2:col(".")-1]=="><" ? "<cr><esc>ko<tab>"
+   \   getline(".")[col(".")-2:col(".")-1]=="><" ? "<cr><esc>ko"
 	 \ : getline(".")[col(".")-2:col(".")-1]=="{}" ? "<cr><esc>ko"
-	 \ : getline(".")[col(".")-2:col(".")-1]=="()" ? "<cr><esc>ko<tab>"
-	 \ : getline(".")[col(".")-2:col(".")-1]=="[]" ? "<cr><esc>ko<tab>"
+	 \ : getline(".")[col(".")-2:col(".")-1]=="()" ? "<cr><esc>ko"
+	 \ : getline(".")[col(".")-2:col(".")-1]=="[]" ? "<cr><esc>ko"
    \ :                                             "<cr>"
 
 
@@ -343,8 +349,8 @@ hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 nnoremap x "_x
 
 
-
-
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+" au CursorHold * silent call CocActionAsync('highlight') " highlight match on cursor hold
 
 
 " Return to last edit position when opening files
