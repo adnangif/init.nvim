@@ -13,7 +13,7 @@
     "dart"
   ],
   // suggest settings
-  // "suggest.noselect": false,
+  "suggest.noselect": false,
   "suggest.detailField": "abbr",
   "suggest.snippetIndicator": "",
   "suggest.removeDuplicateItems": true,
