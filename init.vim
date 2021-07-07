@@ -211,6 +211,12 @@ nmap qq        :bw<cr>
 " NERDTree ==================================================
 nmap <space>s  :NERDTreeToggle<cr>
 nmap ml        :vertical sb<cr>
+
+" NERDTree configs
+let g:NERDTreeIgnore = ['^node_modules$']           " Ignore node_modules folder
+
+
+
 " Exit Vim if NERDTree is the only window left.
 " autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
 "     \ quit | endif
