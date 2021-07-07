@@ -35,6 +35,7 @@ Plug 'ryanoasis/vim-devicons'                 " pretty icons everywhere
 Plug 'luochen1990/rainbow'                    " rainbow parenthesis
 Plug 'gregsexton/MatchTag'                    " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'                 " move visual selection
+Plug 'morhetz/gruvbox'                        " GruvBox colorScheme
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 
@@ -82,11 +83,13 @@ inoremap <expr> <cr>
 let loaded_netrw = 0                                    " diable netew
 
 " Color theme Settings
-let g:material_style='oceanic'
-let g:airline_theme='material'
-set background=dark
-colorscheme vim-material
+" let g:material_style='oceanic'
+" set background=dark
 
+" colorscheme vim-material
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_sign_column   = 'bg0'
 
 
 " Fuzzy
@@ -115,6 +118,7 @@ let g:tmux_navigator_no_mappings = 1
 
 " semshi settings
 let g:semshi#error_sign	= v:false                       " let ms python lsp handle this
+
 
 
 
@@ -298,11 +302,11 @@ set undodir=/tmp                                        " undo temp file directo
 set foldlevel=0                                         " open all folds by default
 set inccommand=nosplit                                  " visual feedback while substituting
 set showtabline=2                                       " always show tabline
-
+set cursorline
 
 
 " performance tweaks
-set nocursorline
+" set nocursorline
 set nocursorcolumn
 set lazyredraw
 set redrawtime=10000
@@ -358,7 +362,7 @@ hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE
 	" search string highlight color
 hi NonText guifg=bg  
 	" mask ~ on empty lines
-hi clear CursorLineNr 
+" hi clear CursorLineNr 
 	" use the theme color for relative number
 hi SpellBad guifg=NONE gui=bold,undercurl
 	" misspelled words
