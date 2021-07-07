@@ -181,8 +181,8 @@ let g:startify_custom_header = [
 
 " startify if no passed argument or all buffers are closed
 augroup noargs
-    " startify when there is no open buffer left
-    autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif
+    " " startify when there is no open buffer left
+    " autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif
 
     " open startify on start if no argument was passed
     autocmd VimEnter * if argc() == 0 | Startify | endif
@@ -255,6 +255,13 @@ nmap <space>f :Files<cr>
 nmap <tab> :bnext<cr>
 nmap <S-Tab> :bprevious<cr>
 
+" coc mapings
+
+" GoTo code navigation.
+nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR> 
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 
 
