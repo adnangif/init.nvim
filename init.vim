@@ -363,7 +363,7 @@ set undodir=/tmp                                        " undo temp file directo
 set foldlevel=0                                         " open all folds by default
 set inccommand=nosplit                                  " visual feedback while substituting
 set showtabline=2                                       " always show tabline
-set cursorline
+" set cursorline
 
 
 " performance tweaks
