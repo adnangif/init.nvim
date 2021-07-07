@@ -1,4 +1,7 @@
 let mapleader = ","
+set nocompatible                                      " So that we can use polyglot plugin
+
+
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -13,11 +16,14 @@ Plug 'famiu/nvim-reload'
 " vim comment lines
 Plug 'tpope/vim-commentary'  
 
-" Color theme
-Plug 'hzchirs/vim-material'
 
 " Airline
 Plug 'vim-airline/vim-airline'
+" Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+
+
 
 " foreign
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
@@ -35,13 +41,21 @@ Plug 'ryanoasis/vim-devicons'                 " pretty icons everywhere
 Plug 'luochen1990/rainbow'                    " rainbow parenthesis
 Plug 'gregsexton/MatchTag'                    " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'                 " move visual selection
-Plug 'morhetz/gruvbox'                        " GruvBox colorScheme
+Plug 'sheerun/vim-polyglot'                   " for better highlight
+
+" Themes
+Plug 'ghifarit53/tokyonight-vim'
+
+" Plug 'hzchirs/vim-material'
+" Plug 'morhetz/gruvbox'                        " GruvBox colorScheme
+" Plug 'cocopon/pgmnt.vim'
+" Plug 'joshdick/onedark.vim'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 
 Plug 'lfv89/vim-interestingwords'             " highlight word
-nnoremap <silent> <space>k :call InterestingWords('n')<cr>
-vnoremap <silent> <space>k :call InterestingWords('v')<cr>
+" nnoremap <silent> <space>k :call InterestingWords('n')<cr>
+" vnoremap <silent> <space>k :call InterestingWords('v')<cr>
 nnoremap <silent><esc><esc> :call UncolorAllWords()<cr>
 
 nnoremap <silent> n :call WordNavigation(1)<cr>
@@ -83,14 +97,22 @@ inoremap <expr> <cr>
 let loaded_netrw = 0                                    " diable netew
 
 " Color theme Settings
+
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+" let g:airline_theme = "tokyonight"
+colorscheme tokyonight
+
 " let g:material_style='oceanic'
 " set background=dark
-
 " colorscheme vim-material
-colorscheme gruvbox
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_sign_column   = 'bg0'
+" let g:airline_theme='material'
 
+
+" let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_sign_column   = 'bg0'
+" colorscheme gruvbox
 
 " Fuzzy
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
@@ -123,14 +145,14 @@ let g:semshi#error_sign	= v:false                       " let ms python lsp hand
 
 
 " Airline
-let g:airline_theme='material'
+
 let g:airline_skip_empty_sections = 1
 let g:airline_section_warning = ''
 let g:airline_section_x=''
 let g:airline_section_z = airline#section#create(['%3p%% ', 'linenr', ':%c'])
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_min_count = 2   " show tabline only if there is more than 1 buffer
+let g:airline#extensions#tabline#buffer_min_count = 1   " show tabline only if there is more than 1 buffer
 let g:airline#extensions#tabline#fnamemod = ':t'        " show only file name on tabs
 let airline#extensions#coc#error_symbol = '✘:'
 let airline#extensions#coc#warning_symbol = '⚠:'
@@ -139,7 +161,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.branch = '⎇ '
-let g:airline_symbols.dirty= ''
+let g:airline_symbols.dirty= ' >'
 
 
 
@@ -202,19 +224,19 @@ let  g:startify_bookmarks =  [
 
 
 " custom banner
-" let g:startify_custom_header = [
-"  \ '',
-"  \ '                                                    ▟▙            ',
-"  \ '                                                    ▝▘            ',
-"  \ '            ██▃▅▇█▆▖  ▗▟████▙▖   ▄████▄   ██▄  ▄██  ██  ▗▟█▆▄▄▆█▙▖',
-"  \ '            ██▛▔ ▝██  ██▄▄▄▄██  ██▛▔▔▜██  ▝██  ██▘  ██  ██▛▜██▛▜██',
-"  \ '            ██    ██  ██▀▀▀▀▀▘  ██▖  ▗██   ▜█▙▟█▛   ██  ██  ██  ██',
-"  \ '            ██    ██  ▜█▙▄▄▄▟▊  ▀██▙▟██▀   ▝████▘   ██  ██  ██  ██',
-"  \ '            ▀▀    ▀▀   ▝▀▀▀▀▀     ▀▀▀▀       ▀▀     ▀▀  ▀▀  ▀▀  ▀▀',
-"  \ '',
-"  \ '',
-"  \ '',
-"  \]
+let g:startify_custom_header = [
+ \ '',
+ \ '                                                    ▟▙            ',
+ \ '                                                    ▝▘            ',
+ \ '            ██▃▅▇█▆▖  ▗▟████▙▖   ▄████▄   ██▄  ▄██  ██  ▗▟█▆▄▄▆█▙▖',
+ \ '            ██▛▔ ▝██  ██▄▄▄▄██  ██▛▔▔▜██  ▝██  ██▘  ██  ██▛▜██▛▜██',
+ \ '            ██    ██  ██▀▀▀▀▀▘  ██▖  ▗██   ▜█▙▟█▛   ██  ██  ██  ██',
+ \ '            ██    ██  ▜█▙▄▄▄▟▊  ▀██▙▟██▀   ▝████▘   ██  ██  ██  ██',
+ \ '            ▀▀    ▀▀   ▝▀▀▀▀▀     ▀▀▀▀       ▀▀     ▀▀  ▀▀  ▀▀  ▀▀',
+ \ '',
+ \ '',
+ \ '',
+ \]
 
 
 
@@ -391,13 +413,13 @@ set signcolumn=yes
 
 
 " Highlighting stuff
-hi CursorLineNr gui=bold         
+hi CursorLineNr gui=bold guifg=#b16286
 	" make relative number bold
 hi Pmenu guibg='#00010a' guifg=white 
 	" popup menu colors
 hi Comment gui=italic cterm=italic 
 	" italic comments
-hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE 
+" hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE 
 	" search string highlight color
 hi NonText guifg=bg  
 	" mask ~ on empty lines
@@ -405,7 +427,6 @@ hi NonText guifg=bg
 	" use the theme color for relative number
 hi SpellBad guifg=NONE gui=bold,undercurl
 	" misspelled words
-
 
 " colors for git (especially the gutter)
 hi DiffAdd  guibg=#0f111a guifg=#43a047
