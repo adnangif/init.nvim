@@ -70,5 +70,6 @@
   // other language specific settings
   "html.autoClosingTags": true,
   "coc.source.ultisnips.filetypes": [],
-  "prettier.proseWrap": "always"
+  "prettier.proseWrap": "always",
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
 }

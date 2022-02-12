@@ -29,6 +29,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
 Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
+Plug 'vim-scripts/auto-pairs-gentle'                                 " fuzzy search integration
 Plug 'honza/vim-snippets'                               " actual snippets
 Plug 'Yggdroot/indentLine'                              " show indentation lines
 Plug 'tpope/vim-liquid'                                 " liquid language support
@@ -37,7 +38,7 @@ Plug 'mhinz/vim-startify'                               " cool start up screen
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
 Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
-Plug 'ryanoasis/vim-devicons'                 " pretty icons everywhere
+" Plug 'ryanoasis/vim-devicons'                 " pretty icons everywhere
 Plug 'luochen1990/rainbow'                    " rainbow parenthesis
 Plug 'gregsexton/MatchTag'                    " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'                 " move visual selection
@@ -85,12 +86,6 @@ nmap ff :CocCommand prettier.formatFile<cr>
 " inoremap (<CR> (<CR>)<Esc>ko<tab>
 
 " Html tag auto indent
-inoremap <expr> <cr> 
-   \   getline(".")[col(".")-2:col(".")-1]=="><" ? "<cr><esc>ko<tab>"
-	 \ : getline(".")[col(".")-2:col(".")-1]=="{}" ? "<cr><esc>ko<tab>"
-	 \ : getline(".")[col(".")-2:col(".")-1]=="()" ? "<cr><esc>ko<tab>"
-	 \ : getline(".")[col(".")-2:col(".")-1]=="[]" ? "<cr><esc>ko"
-   \ :                                             "<cr>"
 
 
 " Builtin plugins
@@ -121,7 +116,9 @@ let g:fzf_tags_command = 'ctags -R'
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build/**' --glob '!.dart_tool/**' --glob '!.idea' --glob '!node_modules'"
 
-
+" auto-pairs 
+" automatically set indent pairs
+let g:AutoPairsCenterLine = 0
 
 " indentLine
 let g:indentLine_char_list = ['▏', '¦', '┆', '┊']
@@ -336,6 +333,7 @@ nmap <silent> gr <Plug>(coc-references)
 set ts=2 sw=2 sts=2 expandtab
 " set autoindent smarttab
 " set smartindent
+set encoding=UTF-8
 set mouse=a
 set clipboard+=unnamed
 set incsearch ignorecase smartcase hlsearch
