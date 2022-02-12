@@ -27,21 +27,21 @@ Plug 'vim-airline/vim-airline'
 
 " foreign
 Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
-Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
+" Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
 Plug 'vim-scripts/auto-pairs-gentle'                                 " fuzzy search integration
-Plug 'honza/vim-snippets'                               " actual snippets
+" Plug 'honza/vim-snippets'                               " actual snippets
 Plug 'Yggdroot/indentLine'                              " show indentation lines
 Plug 'tpope/vim-liquid'                                 " liquid language support
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python
-Plug 'mhinz/vim-startify'                               " cool start up screen
+" Plug 'mhinz/vim-startify'                               " cool start up screen
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
-Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
+" Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
 " Plug 'ryanoasis/vim-devicons'                 " pretty icons everywhere
-Plug 'luochen1990/rainbow'                    " rainbow parenthesis
+" Plug 'luochen1990/rainbow'                    " rainbow parenthesis
 Plug 'gregsexton/MatchTag'                    " highlight matching html tags
-Plug 'Jorengarenar/vim-MvVis'                 " move visual selection
+" Plug 'Jorengarenar/vim-MvVis'                 " move visual selection
 Plug 'sheerun/vim-polyglot'                   " for better highlight
 Plug 'rhysd/vim-clang-format'                 " for c code formatting
 
