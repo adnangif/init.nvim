@@ -93,11 +93,11 @@ nmap ff :ClangFormat<cr>
 let loaded_netrw = 0                                    " diable netew
 
 " Color theme Settings
+set termguicolors
 
-
-let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1
-" let g:airline_theme = "tokyonight"
+let g:airline_theme = "tokyonight"
 colorscheme tokyonight
 
 " let g:material_style='oceanic'
