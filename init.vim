@@ -402,9 +402,10 @@ set hidden
 set nobackup
 set nowritebackup
 set cmdheight=1
-set updatetime=300
+set updatetime=500
 set shortmess+=c
 set signcolumn=yes
+
 
 
 

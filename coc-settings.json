@@ -49,8 +49,12 @@
   },
 
   // diagnostic settings
+  "clangd.disableCompletion":true,
+  "clangd.disableSnippetCompletion":true,
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+
   "diagnostic.displayByAle": false,
-  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.refreshOnInsertMode": false,
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "",
@@ -71,5 +75,4 @@
   "html.autoClosingTags": true,
   "coc.source.ultisnips.filetypes": [],
   "prettier.proseWrap": "always",
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
 }
