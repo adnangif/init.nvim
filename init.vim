@@ -339,7 +339,8 @@ set ts=2 sw=2 sts=2 expandtab
 set mouse=a
 set clipboard+=unnamed
 set incsearch ignorecase smartcase hlsearch
-set termguicolors
+" set termguicolors
+set cursorline 
 set number
 set relativenumber
 syntax enable
