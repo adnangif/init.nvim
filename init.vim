@@ -43,6 +43,7 @@ Plug 'luochen1990/rainbow'                    " rainbow parenthesis
 Plug 'gregsexton/MatchTag'                    " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'                 " move visual selection
 Plug 'sheerun/vim-polyglot'                   " for better highlight
+Plug 'rhysd/vim-clang-format'                 " for c code formatting
 
 " Themes
 Plug 'ghifarit53/tokyonight-vim'
@@ -72,7 +73,7 @@ call plug#end()
 
 
 " auto format
-nmap ff :CocCommand prettier.formatFile<cr>
+nmap ff :ClangFormat<cr>
 " nmap <C-I> :Prettier<cr>
 
 " let g:prettier#autoformat = 1
